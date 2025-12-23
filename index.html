@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lettera d’amore</title>
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #0f1220;
+      color: #f5f7ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+      padding: 24px;
+    }
+    .letter{
+      max-width: 760px;
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 28px 26px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+    .top{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .title{
+      font-size: 20px;
+      letter-spacing: 0.2px;
+      margin: 0;
+    }
+    .date{
+      opacity: 0.75;
+      font-size: 14px;
+      margin: 0;
+    }
+    .heart{
+      display:inline-block;
+      margin-left: 8px;
+      filter: drop-shadow(0 6px 18px rgba(255, 80, 120, 0.35));
+    }
+    .salutation{
+      font-size: 18px;
+      margin: 10px 0 14px;
+    }
+    p{
+      line-height: 1.7;
+      margin: 0 0 14px;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .quote{
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 4px solid rgba(255, 80, 120, 0.7);
+      background: rgba(255, 80, 120, 0.08);
+      border-radius: 10px;
+      font-style: italic;
+    }
+    .signature{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(255,255,255,0.22);
+    }
+    .name{
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+    .ps{
+      margin-top: 14px;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+    .btn{
+      margin-top: 18px;
+      display:inline-block;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: #f5f7ff;
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+  </style>
+</head>
+<body>
+  <main class="letter" role="article" aria-label="Lettera d’amore">
+    <header class="top">
+      <h1 class="title">Una lettera per te <span class="heart">♥</span></h1>
+      <p class="date" id="oggi">Oggi</p>
+    </header>
+
+    <div class="content">
+      <div class="salutation">Amore mio,</div>
+
+      <p>
+        ci sono persone che entrano nella vita in punta di piedi, e poi scopri che, senza fare rumore,
+        hanno spostato i mobili dell’anima nel posto giusto. Tu sei così.
+      </p>
+
+      <p>
+        Mi piaci quando ridi sul serio, quando ti distrai e diventi te, senza filtri.
+        Mi piaci quando parli delle cose che ami, perché lì si vede la luce che ti porti dentro.
+        E mi piaci anche nei giorni storti, perché in quei giorni capisco quanto sei forte.
+      </p>
+
+      <div class="quote">
+        Se dovessi scegliere un posto sicuro, sceglierei la tua presenza.  
+        Non perché tutto diventa facile, ma perché tutto diventa possibile.
+      </div>
+
+      <p>
+        Non ho promesse perfette da vendere. Ho una verità semplice: con te mi viene voglia di fare meglio.
+        Di essere più gentile, più coraggioso, più vero. E se il futuro è un’incognita,
+        allora io voglio scoprirlo tenendoti la mano.
+      </p>
+
+      <p>
+        Grazie per come mi guardi, per come ci sei, per come esisti.  
+        Se questa lettera avesse un suono, sarebbe quello della calma che mi dai quando mi avvicino a te.
+      </p>
+
+      <section class="signature">
+        <p>Con tutto quello che ho,</p>
+        <div class="name">[Il tuo nome]</div>
+        <div class="ps">P.S. Se ti va, scegliamo un giorno e lo trasformiamo in un ricordo bello.</div>
+
+        <button class="btn" type="button" id="cuore">Clicca qui</button>
+        <span id="msg" style="margin-left:10px; opacity:0.9;"></span>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Data in italiano (senza librerie)
+    (function(){
+      const mesi = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+      const d = new Date();
+      const testo = d.getDate() + " " + mesi[d.getMonth()] + " " + d.getFullYear();
+      document.getElementById("oggi").textContent = testo;
+    })();
+
+    // Piccolo easter egg romantico
+    document.getElementById("cuore").addEventListener("click", function(){
+      const frasi = [
+        "Sei la mia scelta preferita.",
+        "Con te, anche il silenzio è bello.",
+        "Ti penso più di quanto dico.",
+        "Tu, qui, adesso: basta questo."
+      ];
+      const msg = frasi[Math.floor(Math.random() * frasi.length)];
+      document.getElementById("msg").textContent = "♥ " + msg;
+    });
+  </script>
+</body>
+</html>
